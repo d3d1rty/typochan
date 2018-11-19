@@ -1,0 +1,14 @@
+#original-post
+  - if signed_in? && current_user.admin?
+    %p
+      = link_to 'Destroy', board_post_path(@board, @post), method: :delete, data: { confirm: 'Are you sure?' }
+  = link_to "Back to #{@board.name}", board_path(@board)
+  %p
+    %b Poster:
+    = @post.poster
+  %p
+    %b Subject:
+    = @post.subject
+  %p
+    = markdown(@post.body).html_safe
+

@@ -28,6 +28,11 @@ Rails.application.routes.draw do
   # Clearance routes for login
   resource :session, controller: 'sessions', only: %i[create new]
 
-  get 'about', to: 'public#about', as: 'about'
+  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+
+  resources :boards do
+    resources :posts
+  end
+
   root 'public#index', as: 'home'
 end

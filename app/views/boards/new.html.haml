@@ -1,0 +1,8 @@
+= render 'layouts/errors', object: @board
+%h1 New board
+= form_for @board do |form|
+  = render partial: '/boards/form', object: form
+  .actions
+    = form.submit 'Submit'
+
+= link_to 'Back', boards_path

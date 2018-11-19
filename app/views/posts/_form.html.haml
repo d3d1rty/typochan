@@ -1,0 +1,10 @@
+= form_for [@board, @post] do |f|
+  = hidden_field_tag :board_id, @board.id
+  .form-group
+    = f.label :subject
+    = f.text_field :subject
+  .form-group
+    = f.label :body
+    ~ f.text_area :body
+  .form-action
+    = f.submit 'Save'

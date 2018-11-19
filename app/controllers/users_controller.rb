@@ -6,8 +6,9 @@
 #
 # This controller provides methods for accessing user resources.
 class UsersController < Clearance::UsersController
-  before_action :set_user, only: %i[show edit edit_profile update destroy]
-  before_action :protect_user_resources, only: %i[edit edit_profile update destroy]
+  # NOTE: Uncomment filters when controller actions are ready to be implemented.
+  # before_action :set_user, only: %i[show edit update destroy]
+  # before_action :require_login, only: %i[edit create update destroy]
 
   ##
   # GET /users/new
@@ -17,60 +18,57 @@ class UsersController < Clearance::UsersController
 
   ##
   # GET /users/:user_id
-  def show; end
+  # NOTE: not implemented yet.
+  # def show; end
 
   ##
   # GET /users/:user_id/edit
-  def edit; end
+  # NOTE: not implemented yet.
+  # def edit; end
 
   ##
   # POST /users
   def create
     @user = User.create(user_params)
-    respond_to do |format|
-      if @user.save
-        sign_in @user
-        flash[:message] = 'Account creation successful.'
-        flash[:type] = 'success'
-        format.html { redirect_to url_after_create }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      sign_in @user
+      flash[:message] = 'Account creation successful.'
+      flash[:type] = 'success'
+      redirect_to url_after_create
+    else
+      render :new
     end
   end
 
   ##
   # PATCH/PUT /users/:user_id
-  #
-  # PATCH/PUT /users/:user_id.json
-  def update
-    respond_to do |format|
-      if @user.update(user_params)
-        flash[:message] = 'User information was successfully updated.'
-        flash[:type] = 'success'
-        format.html { redirect_to @user }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # NOTE: not implemented yet.
+  # def update
+  #   if @user.update(user_params)
+  #     flash[:message] = 'User information was successfully updated.'
+  #     flash[:type] = 'success'
+  #     redirect_to @user
+  #   else
+  #     render :edit
+  #   end
+  # end
+
+  ##
+  # DELETE /users/:user_id/
+  # NOTE: not implemented yet.
+  # def destroy
+  #   @user.destroy
+  #   flash[:message] = 'User account was successfully deleted.'
+  #   flash[:type] = 'success'
+  #   redirect_to home_path
+  # end
 
   private
 
   ##
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
-  end
-
-  ##
-  # Protects against directory traversal
-  def protect_user_resources
-    head status: :unauthorized unless @user == current_user
+    @user = current_user
   end
 
   ##

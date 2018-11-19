@@ -1,0 +1,52 @@
+#new-post-form {
+  margin: auto;
+  margin-top: 1em;
+  padding: 1em;
+  border: 1px solid black;
+  width: 90%;
+
+  @media screen and (min-width: 540px) {
+    width: 75%;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .form-group {
+    display: flex;
+
+    label {
+      align-self: center;
+      text-align: center;
+      width: 30%;
+    }
+
+    input, textarea {
+      width: 70%;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      margin-top: 1em;
+      height: 30vh;
+    }
+  }
+
+  .form-action {
+    margin-top: 1em;
+    text-align: center;
+  }
+}
+
+#original-post {
+  margin: auto;
+  margin-top: 1em;
+  padding: 1em;
+  border: 1px solid black;
+  width: 90%;
+
+  @media screen and (min-width: 540px) {
+    width: 75%;
+  }
+}

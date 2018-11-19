@@ -1,8 +1,10 @@
+- @boards = Board.all
 %p
   = link_to 'Home', home_path
   \/
-  = link_to 'About', about_path
-  \/
+  - if signed_in? && current_user.admin?
+    = link_to 'Dashboard', dashboard_path
+    \/
   - if signed_in?
     = link_to 'Sign out', sign_out_path, method: :delete, class: 'nav-link text-center'
   - else
@@ -13,17 +15,12 @@
 
 Boards:
 \
-= link_to 'Programming', '#'
-\|
-= link_to 'Robotics', '#'
-\|
-= link_to 'Philosophy', '#'
-\|
-= link_to 'Literature', '#'
-\|
-= link_to 'History', '#'
-\|
-= link_to 'Anime', '#'
-\|
-= link_to 'OT', '#'
+- @boards.each_with_index do |board, count|
+  - if count == 0
+    \|
+    = link_to board.name, board_path(board)
+    \|
+  - else
+    = link_to board.name, board_path(board)
+    \|
 %hr
