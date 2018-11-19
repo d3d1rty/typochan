@@ -1,0 +1,14 @@
+- if flash[:message]
+  %p= flash[:message]
+#clearance.sign-in
+  %h2= t(".title")
+  = form_for :session, url: session_path do |form|
+    = render partial: '/sessions/form', object: form
+    .submit-field
+      = form.submit
+    - if Clearance.configuration.allow_sign_up?
+      .other-links
+        %p
+          Don't have an account?
+          \
+          = link_to 'Sign up', sign_up_path

@@ -1,0 +1,6 @@
+-if object.errors.any?
+  .form-errors
+    %h5= "#{pluralize(object.errors.count, 'error')} prohibited this form from being saved:"
+    %ul
+      -object.errors.full_messages.each do |error|
+        %li= error

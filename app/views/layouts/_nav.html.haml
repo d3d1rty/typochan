@@ -1,0 +1,29 @@
+%p
+  = link_to 'Home', home_path
+  \/
+  = link_to 'About', about_path
+  \/
+  - if signed_in?
+    = link_to 'Sign out', sign_out_path, method: :delete, class: 'nav-link text-center'
+  - else
+    - if Clearance.configuration.allow_sign_up?
+      = link_to 'Sign up', sign_up_path
+      \/
+    = link_to 'Sign in', sign_in_path
+
+Boards:
+\
+= link_to 'Programming', '#'
+\|
+= link_to 'Robotics', '#'
+\|
+= link_to 'Philosophy', '#'
+\|
+= link_to 'Literature', '#'
+\|
+= link_to 'History', '#'
+\|
+= link_to 'Anime', '#'
+\|
+= link_to 'OT', '#'
+%hr
