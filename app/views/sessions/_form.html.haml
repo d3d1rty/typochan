@@ -1,8 +1,9 @@
-.text-field
-  = form.label :email
-  %br
-  = form.text_field :email, type: 'email'
-.password-field
-  = form.label :password
-  %br
-  = form.password_field :password
+= form_for :session, url: session_path do |form|
+  .form-group
+    = form.label :email
+    = form.text_field :email, type: 'email'
+  .form-group
+    = form.label :password
+    = form.password_field :password
+  .form-action
+    = form.submit

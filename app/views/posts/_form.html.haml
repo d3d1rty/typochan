@@ -1,4 +1,5 @@
 = form_for [@board, @post] do |f|
+  = invisible_captcha
   = hidden_field_tag :board_id, @board.id
   .form-group
     = f.label :subject
@@ -7,4 +8,4 @@
     = f.label :body
     ~ f.text_area :body
   .form-action
-    = f.submit 'Save'
+    = f.submit 'Post'

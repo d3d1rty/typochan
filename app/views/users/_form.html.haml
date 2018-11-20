@@ -1,12 +1,13 @@
-.text-field
-  = form.label :email
-  %br
-  = form.text_field :email, type: 'email'
-.text-field
-  = form.label :handle
-  %br
-  = form.text_field :handle, type: 'text'
-.password-field
-  = form.label :password
-  %br
-  = form.password_field :password
+= form_for @user do |form|
+  = invisible_captcha
+  .form-group
+    = form.label :email
+    = form.text_field :email, type: 'email'
+  .form-group
+    = form.label :handle
+    = form.text_field :handle, type: 'text'
+  .form-group
+    = form.label :password
+    = form.password_field :password
+  .form-action
+    = form.submit

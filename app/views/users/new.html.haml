@@ -1,12 +1,13 @@
-= render 'layouts/errors', object: @user
 #clearance.sign-up
+  -if flash[:errors]
+    #clearance-form-errors
+      %ul
+        -flash[:errors].each do |error|
+          %li= error
   %h2 Sign up
-  = form_for @user do |form|
-    = render partial: '/users/form', object: form
-    .submit-field
-      = form.submit
-    .other-links
-      %p
-        Already signed up?
-        \
-        = link_to 'Sign in', sign_in_path
+  = render partial: '/users/form'
+  .other-links
+    %p
+      Already signed up?
+      \
+      = link_to 'Sign in', sign_in_path

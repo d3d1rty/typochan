@@ -11,6 +11,8 @@ module Typochan
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    # Enable Rack Attack as middleware.
+    config.middleware.use Rack::Attack
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

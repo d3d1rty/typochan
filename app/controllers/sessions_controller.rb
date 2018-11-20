@@ -21,8 +21,7 @@ class SessionsController < Clearance::SessionsController
       if status.success?
         redirect_to url_after_create
       else
-        flash[:message] = status.failure_message
-        flash[:type] = 'danger'
+        flash[:error] = status.failure_message
         redirect_to sign_in_path
       end
     end

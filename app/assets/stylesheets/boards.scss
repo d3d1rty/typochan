@@ -10,9 +10,10 @@
   .post-item {
     width: 75%;
     height: auto;
-    border: 1px solid black;
+    border: 1px solid $grey;
     margin: 1em;
     padding: 1em;
+    word-wrap: break-word;
 
     @media screen and (min-width: 540px) {
       width: 20%;

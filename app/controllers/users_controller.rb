@@ -9,6 +9,7 @@ class UsersController < Clearance::UsersController
   # NOTE: Uncomment filters when controller actions are ready to be implemented.
   # before_action :set_user, only: %i[show edit update destroy]
   # before_action :require_login, only: %i[edit create update destroy]
+  invisible_captcha only: %i[create]
 
   ##
   # GET /users/new
@@ -36,7 +37,8 @@ class UsersController < Clearance::UsersController
       flash[:type] = 'success'
       redirect_to url_after_create
     else
-      render :new
+      flash[:errors] = @user.errors.full_messages
+      redirect_to sign_up_path
     end
   end
 

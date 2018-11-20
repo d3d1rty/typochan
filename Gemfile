@@ -5,6 +5,10 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
+# Use Rack Attack for security concerns
+gem 'rack-attack', '~> 5.4', '>= 5.4.2'
+# Use invisible captcha for spam control
+gem 'invisible_captcha', '~> 0.11.0'
 # Use dotenv to load environment variables
 gem 'dotenv-rails', '~> 2.5', groups: %i[development test]
 # Use postgresql as the database for Active Record

@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
   before_action :set_board, only: %i[create show]
   before_action :protect_admin_resources, only: %i[destroy]
+  invisible_captcha only: %i[create]
 
   ##
   # GET /boards/:board_id/posts/:post_id
@@ -16,7 +17,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to board_post_path(@board, @post), notice: 'Post was successfully created.'
     else
-      render 'boards/show'
+      flash[:errors] = @post.errors.full_messages
+      redirect_to board_path(@board)
     end
   end
 
