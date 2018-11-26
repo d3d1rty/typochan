@@ -15,9 +15,9 @@
         - @replies.each_with_index do |reply, index|
           - if index.zero?
             \|
-            - if !(reply.child?)
-              = link_to "##{reply.id}", "##{reply.id}"
-              \|
+          - unless reply.child?
+            = link_to "##{reply.id}", "##{reply.id}"
+            \|
 - @replies.each do |reply|
   .post-reply.card{ id: reply.id }
     .card-header
