@@ -1,26 +1,27 @@
 - @boards = Board.all
-%p
-  = link_to 'Home', home_path
-  \/
-  - if signed_in? && current_user.admin?
-    = link_to 'Dashboard', dashboard_path
+%nav
+  %p
+    = link_to 'Home', home_path
     \/
-  - if signed_in?
-    = link_to 'Sign out', sign_out_path, method: :delete, class: 'nav-link text-center'
-  - else
-    - if Clearance.configuration.allow_sign_up?
-      = link_to 'Sign up', sign_up_path
+    - if signed_in? && current_user.admin?
+      = link_to 'Dashboard', dashboard_path
       \/
-    = link_to 'Sign in', sign_in_path
+    - if signed_in?
+      = link_to 'Sign out', sign_out_path, method: :delete, class: 'nav-link text-center'
+    - else
+      - if Clearance.configuration.allow_sign_up?
+        = link_to 'Sign up', sign_up_path
+        \/
+      = link_to 'Sign in', sign_in_path
 
-Boards:
-\
-- @boards.each_with_index do |board, count|
-  - if count == 0
-    \|
-    = link_to board.name, board_path(board)
-    \|
-  - else
-    = link_to board.name, board_path(board)
-    \|
-%hr
+  %p
+    Boards:
+    \
+    - @boards.each_with_index do |board, count|
+      - if count == 0
+        \|
+        = link_to board.name, board_path(board)
+        \|
+      - else
+        = link_to board.name, board_path(board)
+        \|

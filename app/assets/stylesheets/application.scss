@@ -1,7 +1,29 @@
 @import 'variables';
 @import 'typography';
+@import 'cards';
+@import 'forms';
 @import 'public';
 @import 'users';
 @import 'dashboard';
 @import 'boards';
 @import 'posts';
+
+html, body {
+  nav {
+    color: $charcoal;
+    background-color: white;
+    margin: 0 0 1em 0;
+
+    p {
+      margin: .25em;
+
+      a {
+        color: $blue;
+
+        &:hover {
+          color: $dark-blue;
+        }
+      }
+    }
+  }
+}

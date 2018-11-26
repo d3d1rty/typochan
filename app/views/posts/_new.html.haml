@@ -1,8 +1,5 @@
-#new-post-form
-  -if flash[:errors]
-    #new-post-form-errors
-      %ul
-        -flash[:errors].each do |error|
-          %li= error
-  %h2 New Post
-  = render 'posts/form'
+#new-post-form.card
+  .card-header
+    %h1 New Post
+  .card-body-alt
+    = render 'posts/form'

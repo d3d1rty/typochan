@@ -1,12 +1,15 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
   before_action :set_board, only: %i[create show]
-  before_action :protect_admin_resources, only: %i[destroy]
-  invisible_captcha only: %i[create]
+  before_action :protect_admin_resources, only: :destroy
+  invisible_captcha only: :create
 
   ##
   # GET /boards/:board_id/posts/:post_id
-  def show; end
+  def show
+    @reply = @post.replies.new
+    @replies = @post.replies.all
+  end
 
   ##
   # POST /boards/:board_id/posts
@@ -50,6 +53,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:poster, :subject, :body, :board_id)
+    params.require(:post).permit(:poster, :subject, :body, :board_id, :reply_id)
   end
 end

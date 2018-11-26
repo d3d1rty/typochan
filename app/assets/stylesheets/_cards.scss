@@ -1,0 +1,90 @@
+.card {
+  background-color: white;
+  margin: auto;
+  margin-top: 1em;
+  padding: 0;
+  width: 90%;
+  word-wrap: break-word;
+
+  @media screen and (min-width: 540px) {
+    width: 75%;
+  }
+
+  .card-header {
+    background-color: $charcoal;
+    margin: 0;
+    padding: .5em;
+    border: 1px solid $smoke;
+    border-radius: 5px 5px 0 0;
+    font-size: 85%;
+
+    h1 {
+      color: $snow;
+    }
+
+    p {
+      text-align: right;
+      margin: 0;
+      color: $snow;
+    }
+
+    a {
+      color: $snow;
+    }
+  }
+
+  .card-body {
+    padding: 1em;
+    border-left: 1px solid $smoke;
+    border-right: 1px solid $smoke;
+
+    a {
+      color: $blue;
+
+      &:hover {
+        color: $dark-blue;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .card-body-alt {
+    padding: 1em;
+    border-left: 1px solid $smoke;
+    border-right: 1px solid $smoke;
+    border-bottom: 1px solid $smoke;
+    border-radius: 0 0 5px 5px;
+
+    a {
+      color: $blue;
+
+      &:hover {
+        color: $dark-blue;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .card-footer {
+    background-color: $fog;
+    margin: 0;
+    padding: .5em;
+    border: 1px solid $smoke;
+    border-radius: 0 0 5px 5px;
+    font-size: 85%;
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: $blue;
+
+      &:hover {
+        color: $dark-blue;
+        text-decoration: none;
+      }
+    }
+  }
+}
+

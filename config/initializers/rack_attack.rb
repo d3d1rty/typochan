@@ -78,4 +78,13 @@ class Rack::Attack
       req.ip
     end
   end
+
+  # Throttle POST requests to */replies by IP address
+  #
+  # Key: "rack::attack:#{Time.now.to_i/:period}:signups/ip:#{req.ip}"
+  throttle('replies/ip', limit: 5, period: 20.seconds) do |req|
+    if req.path.end_with?('/replies') && req.post?
+      req.ip
+    end
+  end
 end

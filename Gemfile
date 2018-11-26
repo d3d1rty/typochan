@@ -13,6 +13,8 @@ gem 'invisible_captcha', '~> 0.11.0'
 gem 'dotenv-rails', '~> 2.5', groups: %i[development test]
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+# Use closure_tree for recursive relationships
+gem 'closure_tree', '~> 7.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

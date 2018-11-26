@@ -1,11 +1,16 @@
 = form_for [@board, @post] do |f|
-  = invisible_captcha
-  = hidden_field_tag :board_id, @board.id
-  .form-group
-    = f.label :subject
-    = f.text_field :subject
-  .form-group
-    = f.label :body
-    ~ f.text_area :body
-  .form-action
-    = f.submit 'Post'
+  .form
+    -if flash[:errors]
+      #new-post-form-errors.form-errors
+        %ul
+          -flash[:errors].each do |error|
+            %li= error
+    = invisible_captcha
+    .form-group
+      = f.label :subject
+      = f.text_field :subject
+    .form-group
+      = f.label :body
+      ~ f.text_area :body
+    .form-action
+      = f.submit 'Post'

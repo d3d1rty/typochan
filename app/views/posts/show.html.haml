@@ -1,14 +1,54 @@
-#original-post
-  - if signed_in? && current_user.admin?
+#original-post.card
+  .card-header
+    - if signed_in? && current_user.admin?
+      %p
+        = link_to 'Destroy', board_post_path(@board, @post), method: :delete, data: { confirm: 'Are you sure?' }
+    %p= "\"#{@post.subject}\" - #{@post.poster}"
+  .card-body
     %p
-      = link_to 'Destroy', board_post_path(@board, @post), method: :delete, data: { confirm: 'Are you sure?' }
-  = link_to "Back to #{@board.name}", board_path(@board)
-  %p
-    %b Poster:
-    = @post.poster
-  %p
-    %b Subject:
-    = @post.subject
-  %p
-    = markdown(@post.body).html_safe
+      = markdown(@post.body).html_safe
+  .card-footer
+    = link_to 'Add a Reply', '#new-reply-form', 'onclick': "addReply('OP');", remote: true
+    - unless @replies.empty?
+      %p
+        Replies:
+        - @replies.each_with_index do |reply, index|
+          - if index.zero?
+            \|
+            - if !(reply.child?)
+              = link_to "##{reply.id}", "##{reply.id}"
+              \|
+- @replies.each do |reply|
+  .post-reply.card{ id: reply.id }
+    .card-header
+      %p
+        = reply.poster
+        \-
+        = "##{reply.id}"
+      %p
+        Replying to:
+        - if reply.child?
+          = link_to "##{reply.parent_id}", "##{reply.parent_id}"
+        - else
+          = link_to 'OP', '#original-post'
+    .card-body
+      = markdown(reply.body).html_safe
+    .card-footer
+      = link_to 'Add a Reply', '#new-reply-form', 'onclick': "addReply(#{reply.id});", remote: true
+      - unless reply.leaf?
+        %p
+          Replies:
+          - reply.child_ids.each_with_index do |child_id, index|
+            - if index.zero?
+              \|
+            = link_to "##{child_id}", "##{child_id}"
+            \|
 
+= render partial: '/replies/new', objects: [@board, @post, @reply]
+:javascript
+  // Sets value of reply-to field for reply being replied to.
+  function addReply(reply_id) {
+    let reply_to_field = document.querySelector('#reply-to');
+    reply_to_field.setAttribute('value', reply_id);
+    window.location.href = '#new-reply-form';
+  }

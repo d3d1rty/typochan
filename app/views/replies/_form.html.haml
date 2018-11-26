@@ -1,0 +1,16 @@
+= form_for [@board, @post, @reply] do |f|
+  .form
+    - if flash[:errors]
+      #new-reply-form-errors.form-errors
+        %ul
+          - flash[:errors].each do |error|
+            %li= error
+    = invisible_captcha
+    .form-group
+      = f.label 'Reply-to'
+      ~ f.text_field :parent_id, id: 'reply-to', value: 'OP'
+    .form-group
+      = f.label :body
+      ~ f.text_area :body
+    .form-action
+      = f.submit 'Reply'

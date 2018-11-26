@@ -2,10 +2,11 @@
 %p#board-description= @board.description
 #post-container
   - @posts.each do |post|
-    .post-item
-      %p.post-item-byline= post.poster
-      %hr
-      %p.post-item-subject
-        = link_to post.subject, board_post_path(@board, post)
+    .post-item.card
+      .card-header
+        %p.post-item-byline= post.poster
+      .card-body-alt
+        %p.post-item-subject
+          = link_to post.subject, board_post_path(@board, post)
 %hr
 = render partial: '/posts/new', objects: [@board, @post]

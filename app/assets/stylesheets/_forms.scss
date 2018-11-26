@@ -1,0 +1,58 @@
+.form {
+  margin: auto;
+
+  .form-errors {
+    text-align: center;
+    color: $darker-red;
+    background-color: $red;
+    margin: 0 .5em 1em .5em;
+    padding: 1em;
+    border: 1px solid $dark-red;
+
+    ul {
+      margin: .5em;
+    }
+  }
+
+  .form-group {
+    display: flex;
+
+    label {
+      color: $charcoal;
+      font-weight: bold;
+      align-self: center;
+      text-align: center;
+      width: 20%;
+    }
+
+    input, textarea {
+      width: 80%;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      margin-top: 1em;
+      height: 30vh;
+    }
+  }
+
+  .form-action {
+    margin-top: 1em;
+    text-align: center;
+
+    input[type="submit"] {
+      border: 2px solid $charcoal;
+      border-radius: 5px;
+      background-color: transparent;
+      color: $charcoal;
+      font-size: 110%;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $fog;
+      }
+      padding: .5em;
+    }
+  }
+}

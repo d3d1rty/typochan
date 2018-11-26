@@ -31,7 +31,9 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
 
   resources :boards do
-    resources :posts
+    resources :posts do
+      resources :replies, only: %i[create destroy]
+    end
   end
 
   root 'public#index', as: 'home'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_194121) do
+ActiveRecord::Schema.define(version: 2018_11_25_051443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,24 @@ ActiveRecord::Schema.define(version: 2018_11_19_194121) do
     t.index ["board_id"], name: "index_posts_on_board_id"
   end
 
+  create_table "replies", force: :cascade do |t|
+    t.string "poster"
+    t.text "body"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "parent_id"
+    t.index ["post_id"], name: "index_replies_on_post_id"
+  end
+
+  create_table "reply_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "reply_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "reply_desc_idx"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,4 +64,5 @@ ActiveRecord::Schema.define(version: 2018_11_19_194121) do
   end
 
   add_foreign_key "posts", "boards"
+  add_foreign_key "replies", "posts"
 end
