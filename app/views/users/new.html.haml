@@ -1,12 +1,9 @@
-#clearance.sign-up
-  -if flash[:errors]
-    #clearance-form-errors
-      %ul
-        -flash[:errors].each do |error|
-          %li= error
-  %h2 Sign up
-  = render partial: '/users/form'
-  .other-links
+#clearance.card
+  .card-header
+    %h1 Sign Up
+  .card-body
+    = render partial: '/users/form'
+  .card-footer
     %p
       Already signed up?
       \

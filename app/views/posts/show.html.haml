@@ -4,6 +4,7 @@
       %p
         = link_to 'Destroy', board_post_path(@board, @post), method: :delete, data: { confirm: 'Are you sure?' }
     %p= "\"#{@post.subject}\" - #{@post.poster}"
+    %p= "#{time_ago_in_words(@post.created_at)} ago"
   .card-body
     %p
       = markdown(@post.body).html_safe
@@ -21,17 +22,21 @@
 - @replies.each do |reply|
   .post-reply.card{ id: reply.id }
     .card-header
+      - if signed_in? && current_user.admin?
+        %p
+          = link_to 'Destroy', board_post_reply_path(@board, @post, reply), method: :delete, data: { confirm: 'Are you sure?' }
       %p
         = reply.poster
         \-
         = "##{reply.id}"
+      %p= "#{time_ago_in_words(reply.created_at)} ago"
+    .card-body
       %p
-        Replying to:
+        %b Replying to:
         - if reply.child?
           = link_to "##{reply.parent_id}", "##{reply.parent_id}"
         - else
           = link_to 'OP', '#original-post'
-    .card-body
       = markdown(reply.body).html_safe
     .card-footer
       = link_to 'Add a Reply', '#new-reply-form', 'onclick': "addReply(#{reply.id});", remote: true

@@ -1,57 +1,14 @@
 #clearance {
-  margin: auto;
-  margin-top: 1em;
-  padding: 1em;
-  border: 1px solid $smoke;
-  width: 90%;
+  width: 95%;
 
   @media screen and (min-width: 540px) {
-    width: 75%;
+    width: 65%;
   }
 
-  @media screen and (min-width: 800px) {
-    width: 60%;
-  }
 
-  #clearance-form-errors {
-    text-align: center;
-    color: $darker-red;
-    background-color: $red;
-    margin: .5em;
-    padding: 1em;
-    border: 1px solid $dark-red;
-
-    ul {
-      margin: .5em;
-    }
-  }
-
-  h2 {
-    text-align: center;
-  }
-
-  .form-group {
-    display: flex;
-    margin: .5em;
-
-    label {
-      align-self: center;
+  .card-footer {
+    p {
       text-align: center;
-      width: 30%;
     }
-
-    input {
-      width: 70%;
-      box-sizing: border-box;
-    }
-  }
-
-  .form-action {
-    margin-top: 1em;
-    text-align: center;
-  }
-
-  p {
-    text-align: center;
   }
 }

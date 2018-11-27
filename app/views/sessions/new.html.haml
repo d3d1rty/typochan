@@ -1,12 +1,10 @@
-#clearance.sign-in
-  -if flash[:error]
-    #clearance-form-errors
-      %ul
-        %li= flash[:error]
-  %h2 Sign In
-  = render partial: '/sessions/form'
+#clearance.card
+  .card-header
+    %h1 Sign In
+  .card-body
+    = render partial: '/sessions/form'
   - if Clearance.configuration.allow_sign_up?
-    .other-links
+    .card-footer
       %p
         Don't have an account?
         \

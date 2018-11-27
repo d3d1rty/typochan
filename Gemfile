@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Use HAML instead of ERB
 gem 'haml-rails', '~> 1.0'
+# Use friendly_id for static pages
+gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 # Use RedCarpet for markdown
 gem 'redcarpet', '~> 3.4'
 # Use CodeRay for syntax highlighting

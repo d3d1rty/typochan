@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
-  before_action :set_board, only: %i[create show]
+  before_action :set_board, only: %i[create show destroy]
   before_action :protect_admin_resources, only: :destroy
   invisible_captcha only: :create
 
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
-    redirect_to dashboard_path, notice: 'Post was successfully destroyed.'
+    redirect_to board_path(@board), notice: 'Post was successfully destroyed.'
   end
 
   private

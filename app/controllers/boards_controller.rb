@@ -75,7 +75,7 @@ class BoardsController < ApplicationController
 
    # Use callbacks to share common setup or constraints between actions.
   def set_posts
-    @posts = @board.posts.all.order(created_at: :desc)
+    @posts = @board.posts.all.order(updated_at: :desc)
   end
 
  ##

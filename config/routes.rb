@@ -8,12 +8,12 @@
 Rails.application.routes.draw do
   # Clearance routes to constrains signed in users to the dashboard
   constraints Clearance::Constraints::SignedIn.new do
-    root to: 'public#index', as: :signed_in_root
+    root to: 'pages#show', as: :signed_in_root, id: 'home'
   end
 
   # Clearance routes to constrain signed out users to the public pages
   constraints Clearance::Constraints::SignedOut.new do
-    root to: 'public#index'
+    root to: 'pages#show', id: 'home'
   end
 
   # Clearance routes for users and passwords for password resets
@@ -36,5 +36,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'public#index', as: 'home'
+  resources :pages, only: %i[index show new edit create update destroy]
+
+  root 'pages#show', as: 'home', id: 'home'
 end

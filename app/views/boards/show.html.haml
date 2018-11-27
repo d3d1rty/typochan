@@ -5,8 +5,8 @@
     .post-item.card
       .card-header
         %p.post-item-byline= post.poster
+        %p= "#{time_ago_in_words(post.updated_at)} ago"
       .card-body-alt
         %p.post-item-subject
           = link_to post.subject, board_post_path(@board, post)
-%hr
 = render partial: '/posts/new', objects: [@board, @post]

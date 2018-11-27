@@ -1,16 +1,16 @@
-= form_for [@board, @post] do |f|
+= form_for @page do |f|
   .form
     - if flash[:errors]
-      #new-post-form-errors.form-errors
+      #new-page-form-errors.form-errors
         %ul
           - flash[:errors].each do |error|
             %li= error
     = invisible_captcha
     .form-group
-      = f.label :subject
-      = f.text_field :subject
+      = f.label :title
+      = f.text_field :title
     .form-group
       = f.label :body
       ~ f.text_area :body
     .form-action
-      = f.submit 'Post'
+      = f.submit 'Publish'

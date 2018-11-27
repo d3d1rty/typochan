@@ -15,23 +15,33 @@
   }
 
   .form-group {
+    margin-top: 1em;
     display: flex;
+    flex-flow: row wrap;
 
     label {
+      margin: auto;
       color: $charcoal;
-      font-weight: bold;
       align-self: center;
-      text-align: center;
-      width: 20%;
+      width: 90%;
+
+      @media screen and (min-width: 540px) {
+        width: 30%;
+        text-align: center;
+      }
     }
 
     input, textarea {
-      width: 80%;
+      margin: auto;
+      width: 90%;
       box-sizing: border-box;
+
+      @media screen and (min-width: 540px) {
+        width: 70%;
+      }
     }
 
     textarea {
-      margin-top: 1em;
       height: 30vh;
     }
   }
@@ -43,14 +53,15 @@
     input[type="submit"] {
       border: 2px solid $charcoal;
       border-radius: 5px;
-      background-color: transparent;
-      color: $charcoal;
+      background-color: $charcoal;
+      color: $snow;
       font-size: 110%;
       font-weight: bold;
       cursor: pointer;
 
       &:hover {
-        background-color: $fog;
+        background-color: $smoke;
+        color: $snow;
       }
       padding: .5em;
     }

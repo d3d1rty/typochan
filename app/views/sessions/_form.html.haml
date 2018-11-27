@@ -1,9 +1,16 @@
 = form_for :session, url: session_path do |form|
-  .form-group
-    = form.label :email
-    = form.text_field :email, type: 'email'
-  .form-group
-    = form.label :password
-    = form.password_field :password
-  .form-action
-    = form.submit
+  .form
+    - if flash[:errors]
+      #clearance-form-errors.form-errors
+        %ul
+          -flash[:errors].each do |error|
+            %li= error
+    = invisible_captcha
+    .form-group
+      = form.label :email
+      = form.text_field :email, type: 'email'
+    .form-group
+      = form.label :password
+      = form.password_field :password
+    .form-action
+      = form.submit

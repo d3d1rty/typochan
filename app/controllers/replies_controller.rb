@@ -1,8 +1,8 @@
 class RepliesController < ApplicationController
   before_action :set_reply, only: :destroy
-  before_action :set_post, only: :create
+  before_action :set_post, only: %i[create destroy]
   before_action :set_post_replies, only: :create
-  before_action :set_board, only: :create
+  before_action :set_board, only: %i[create destroy]
   before_action :protect_admin_resources, only: :destroy
   invisible_captcha only: :create
 
@@ -22,7 +22,7 @@ class RepliesController < ApplicationController
 
   def destroy
     @reply.destroy
-    redirect_to dashboard_path, notice: 'Reply was successfully destroyed.'
+    redirect_to board_post_path(@board, @post), notice: 'Reply was successfully destroyed.'
   end
 
   private

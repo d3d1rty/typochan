@@ -1,8 +1,10 @@
 - @boards = Board.all
+- @pages = Page.all
 %nav
   %p
-    = link_to 'Home', home_path
-    \/
+    - @pages.each do |page|
+      = link_to page.title, page_path(page)
+      \/
     - if signed_in? && current_user.admin?
       = link_to 'Dashboard', dashboard_path
       \/
