@@ -19,7 +19,7 @@ module ApplicationHelper
   ##
   # Transforms content provided in markdown syntax into HTML
   def markdown(content)
-    coderayified = CodeRayify.new(escape_html: true, hard_wrap: true)
+    coderayified = CodeRayify.new(filter_html: true, no_images: true, no_styles: true, hard_wrap: true)
     @markdown ||= Redcarpet::Markdown.new(coderayified, autolink: true,
                                                        space_after_headers: true,
                                                        fenced_code_blocks: true,
