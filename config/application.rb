@@ -10,7 +10,7 @@ module Typochan
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     # Enable Rack Attack as middleware.
     config.middleware.use Rack::Attack
     # Settings in config/environments/* take precedence over those specified here.

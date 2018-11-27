@@ -12,17 +12,43 @@ html, body {
     color: $charcoal;
     background-color: white;
     margin: 0 0 1em 0;
+    font-size: 85%;
 
     p {
       margin: .25em;
+      //display: flex;
+      //flex-flow: row wrap;
+      //text-align: center;
 
-      a {
-        color: $blue;
+      @media screen and (min-width: 540px) {
+      }
 
-        &:hover {
-          color: $dark-blue;
+      span {
+        margin: auto;
+
+        a {
+          color: $blue;
+
+          &:hover {
+            color: $dark-blue;
+          }
         }
       }
+
+    .nav-pages {
+      width: 100%;
+
+      @media screen and (min-width: 540px) {
+      }
+
+    }
+    .nav-boards {
+      width: 100%;
+
+      @media screen and (min-width: 540px) {
+      }
+
+    }
     }
   }
 }
