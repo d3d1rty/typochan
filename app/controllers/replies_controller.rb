@@ -22,7 +22,7 @@ class RepliesController < ApplicationController
     @reply.parent = Reply.find(reply_params[:parent_id]) if reply_to_valid?(reply_params[:parent_id].to_i, get_reply_ids(@post_replies))
 
     if @reply.save
-      redirect_to board_post_path(@board, @post), message: 'Reply was successfully created.'
+      redirect_to board_post_path(@board, @post), notice: 'Reply was successfully created.'
     else
       flash[:errors] = @reply.errors.full_messages
       redirect_to board_post_path(@board, @post)
@@ -33,7 +33,7 @@ class RepliesController < ApplicationController
   # DELETE /boards/:board_id/posts/:post_id/replies/:reply_id
   def destroy
     @reply.destroy
-    redirect_to board_post_path(@board, @post), message: 'Reply was successfully destroyed.'
+    redirect_to board_post_path(@board, @post), notice: 'Reply was successfully destroyed.'
   end
 
   private

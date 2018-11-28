@@ -40,9 +40,7 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(page_params)
     if @page.save
-      flash[:message] = 'Page was successfully created.'
-      flash[:type] = 'success'
-      redirect_to @page
+      redirect_to @page, notice: 'Page was successfully created.'
     else
       flash[:errors] = @page.errors.full_messages
       redirect_to new_page_path
@@ -53,9 +51,7 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/:page_id
   def update
     if @page.update(page_params)
-      flash[:message]= 'Page was successfully updated.'
-      flash[:type] = 'success'
-      redirect_to @page
+      redirect_to @page, notice: 'Page was successfully updated.'
     else
       flash[:errors] = @page.errors.full_messages
       redirect_to edit_page_path(@page)
@@ -66,9 +62,7 @@ class PagesController < ApplicationController
   # DELETE /pages/:page_id
   def destroy
     @page.destroy
-    flash[:message] = 'Board was successfully destroyed.'
-    flash[:type] = 'success'
-    redirect_to pages_url
+    redirect_to pages_url, notice: 'Page was successfully destroyed.'
   end
 
   private

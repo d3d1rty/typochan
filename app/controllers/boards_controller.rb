@@ -51,9 +51,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      flash[:message] = 'Board was successfully created.'
-      flash[:type] = 'success'
-      redirect_to @board
+      redirect_to @board, notice: 'Board was successfully created.'
     else
       flash[:errors] = @board.errors.full_messages
       redirect_to new_board_path
@@ -64,9 +62,7 @@ class BoardsController < ApplicationController
   # PATCH/PUT /boards/:board_id
   def update
     if @board.update(board_params)
-      flash[:message]= 'Board was successfully updated.'
-      flash[:type] = 'success'
-      redirect_to @board
+      redirect_to @board, notice: 'Board was successfully updated.'
     else
       flash[:errors] = @board.errors.full_messages
       redirect_to edit_board_path(@board)
@@ -77,9 +73,7 @@ class BoardsController < ApplicationController
   # DELETE /boards/:board_id
   def destroy
     @board.destroy
-    flash[:message] = 'Board was successfully destroyed.'
-    flash[:type] = 'success'
-    redirect_to boards_url
+    redirect_to boards_url, notice: 'Board was successfully destroyed.'
   end
 
   private

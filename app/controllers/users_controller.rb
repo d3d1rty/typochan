@@ -33,9 +33,7 @@ class UsersController < Clearance::UsersController
     @user = User.create(user_params)
     if @user.save
       sign_in @user
-      flash[:message] = 'Account creation successful.'
-      flash[:type] = 'success'
-      redirect_to url_after_create
+      redirect_to url_after_create, notice: 'Account creation successful.'
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to sign_up_path
