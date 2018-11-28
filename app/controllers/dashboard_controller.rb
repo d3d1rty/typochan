@@ -6,17 +6,11 @@
 #
 # This controller provides methods for the dashboard.
 class DashboardController < ApplicationController
-  before_action :protect_admin_resources, only: %i[index]
+  before_action :protect_admin_resources, only: :index
 
   ##
-  # /dashboard
-  def index; end
-
-  private
-
-  ##
-  # Protects against directory traversal
-  def protect_admin_resources
-    head status: :unauthorized unless current_user.admin?
+  # GET /dashboard
+  def index
+    @page_title = 'Dashboard'
   end
 end

@@ -9,6 +9,9 @@
       = f.label :title
       = f.text_field :title
     .form-group
+      = f.label :priority
+      ~ f.number_field :priority
+    .form-group
       = f.label :body
       ~ f.text_area :body
     .form-action

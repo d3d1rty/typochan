@@ -9,10 +9,10 @@ class UsersController < Clearance::UsersController
   # NOTE: Uncomment filters when controller actions are ready to be implemented.
   # before_action :set_user, only: %i[show edit update destroy]
   # before_action :require_login, only: %i[edit create update destroy]
-  invisible_captcha only: %i[create]
+  invisible_captcha only: :create
 
   ##
-  # GET /users/new
+  # GET /sign_up
   def new
     @user = User.new
   end
@@ -68,13 +68,13 @@ class UsersController < Clearance::UsersController
   private
 
   ##
-  # Use callbacks to share common setup or constraints between actions.
+  # Sets user for an action.
   def set_user
     @user = current_user
   end
 
   ##
-  # Overrides default behavior from clearance
+  # Overrides default behavior from clearance.
   def user_from_params
     email = user_params.delete(:email)
     handle = user_params.delete(:handle)
@@ -88,13 +88,13 @@ class UsersController < Clearance::UsersController
   end
 
   ##
-  # Overrides default behavior from clearance
+  # Overrides default behavior from clearance.
   def url_after_create
     '/'
   end
 
   ##
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Processes parameters for user requests.
   def user_params
     params.require(:user).permit(:email, :handle, :password)
   end

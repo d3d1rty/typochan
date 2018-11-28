@@ -1,3 +1,10 @@
+##
+# = RepliesController
+# Author::    Richard Davis
+# Copyright:: Copyright 2018-2019 Mushaka Solutions Inc.
+# License::   GNU Public License 3
+#
+# This controller provides methods for accessing reply resources.
 class RepliesController < ApplicationController
   before_action :set_reply, only: :destroy
   before_action :set_post, only: %i[create destroy]
@@ -6,6 +13,8 @@ class RepliesController < ApplicationController
   before_action :protect_admin_resources, only: :destroy
   invisible_captcha only: :create
 
+  ##
+  # POST /boards/:board_id/posts/:post_id/replies
   def create
     @reply = @post_replies.new
     @reply.poster = signed_in? ? current_user.handle : 'Anon'
@@ -13,37 +22,42 @@ class RepliesController < ApplicationController
     @reply.parent = Reply.find(reply_params[:parent_id]) if reply_to_valid?(reply_params[:parent_id].to_i, get_reply_ids(@post_replies))
 
     if @reply.save
-      redirect_to board_post_path(@board, @post), notice: 'Reply was successfully created.'
+      redirect_to board_post_path(@board, @post), message: 'Reply was successfully created.'
     else
       flash[:errors] = @reply.errors.full_messages
       redirect_to board_post_path(@board, @post)
     end
   end
 
+  ##
+  # DELETE /boards/:board_id/posts/:post_id/replies/:reply_id
   def destroy
     @reply.destroy
-    redirect_to board_post_path(@board, @post), notice: 'Reply was successfully destroyed.'
+    redirect_to board_post_path(@board, @post), message: 'Reply was successfully destroyed.'
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  ##
+  # Set reply for an action.
   def set_reply
     @reply = Reply.find(params[:id])
   end
 
-  # Use callbacks to share common setup or constraints between actions.
+  ##
+  # Set post for an action.
   def set_post
     @post = Post.find(params[:post_id])
   end
 
-  # Use callbacks to share common setup or constraints between actions.
+  ##
+  # Set post replies for an action.
   def set_post_replies
     @post_replies = @post.replies.all
   end
 
- ##
-  # Use callbacks to share common setup or constraints between actions.
+  ##
+  # Set board for an action.
   def set_board
     @board = Board.find(params[:board_id])
   end
@@ -65,12 +79,7 @@ class RepliesController < ApplicationController
   end
 
   ##
-  # Protects against directory traversal
-  def protect_admin_resources
-    head status: :unauthorized unless current_user.admin?
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Process parameters for reply requests.
   def reply_params
     params.require(:reply).permit(:poster, :body, :parent_id, :post_id, :board_id)
   end

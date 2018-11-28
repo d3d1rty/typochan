@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   ##
   # GET /boards/:board_id/posts/:post_id
   def show
+    @page_title = @post.subject
     @reply = @post.replies.new
     @replies = @post.replies.all
   end
@@ -32,8 +33,8 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
+  ##
+  # DELETE /boards/:board_id/posts/:post_id
   def destroy
     @post.destroy
     redirect_to board_path(@board), notice: 'Post was successfully destroyed.'
@@ -41,24 +42,20 @@ class PostsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  ##
+  # Sets post for an action.
   def set_post
     @post = Post.find(params[:id])
   end
 
   ##
-  # Use callbacks to share common setup or constraints between actions.
+  # Sets board for an action.
   def set_board
     @board = Board.find(params[:board_id])
   end
 
   ##
-  # Protects against directory traversal
-  def protect_admin_resources
-    head status: :unauthorized unless current_user.admin?
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Processes parameters for board requests.
   def post_params
     params.require(:post).permit(:poster, :subject, :body, :board_id, :reply_id)
   end

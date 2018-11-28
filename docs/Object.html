@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Object - Typochan Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">BasicObject
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-creating+a+Board">#creating a Board</a>
+    
+    <li ><a href="#method-i-creating+a+Post">#creating a Post</a>
+    
+    <li ><a href="#method-i-destroying+a+Board">#destroying a Board</a>
+    
+    <li ><a href="#method-i-destroying+a+Post">#destroying a Post</a>
+    
+    <li ><a href="#method-i-should+create+board">#should create board</a>
+    
+    <li ><a href="#method-i-should+create+post">#should create post</a>
+    
+    <li ><a href="#method-i-should+destroy+board">#should destroy board</a>
+    
+    <li ><a href="#method-i-should+destroy+post">#should destroy post</a>
+    
+    <li ><a href="#method-i-should+get+edit">#should get edit</a>
+    
+    <li ><a href="#method-i-should+get+index">#should get index</a>
+    
+    <li ><a href="#method-i-should+get+new">#should get new</a>
+    
+    <li ><a href="#method-i-should+show+board">#should show board</a>
+    
+    <li ><a href="#method-i-should+show+post">#should show post</a>
+    
+    <li ><a href="#method-i-should+update+board">#should update board</a>
+    
+    <li ><a href="#method-i-updating+a+Board">#updating a Board</a>
+    
+    <li ><a href="#method-i-visiting+the+index">#visiting the index</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Object">
+  <h1 id="class-Object" class="class">
+    class Object
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-creating+a+Board" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creating a Board</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test case for creating a new board.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creating+a+Board-source">
+            <pre><span class="ruby-comment"># File test/system/boards_test.rb, line 26</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;creating a Board&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">visit</span> <span class="ruby-identifier">boards_url</span>
+  <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;New Board&quot;</span>
+
+  <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;Description&quot;</span>, <span class="ruby-value">with:</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">description</span>
+  <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;Name&quot;</span>, <span class="ruby-value">with:</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">name</span>
+  <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;Create Board&quot;</span>
+
+  <span class="ruby-identifier">assert_text</span> <span class="ruby-string">&quot;Board was successfully created&quot;</span>
+  <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;Back&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creating+a+Post" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creating a Post</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test case for creating a post.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creating+a+Post-source">
+            <pre><span class="ruby-comment"># File test/system/posts_test.rb, line 19</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;creating a Post&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">visit</span> <span class="ruby-identifier">posts_url</span>
+  <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;New Post&quot;</span>
+
+  <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;Board&quot;</span>, <span class="ruby-value">with:</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">board_id</span>
+  <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;Body&quot;</span>, <span class="ruby-value">with:</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">body</span>
+  <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;Poster&quot;</span>, <span class="ruby-value">with:</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">poster</span>
+  <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;Subject&quot;</span>, <span class="ruby-value">with:</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">subject</span>
+  <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;Create Post&quot;</span>
+
+  <span class="ruby-identifier">assert_text</span> <span class="ruby-string">&quot;Post was successfully created&quot;</span>
+  <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;Back&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-destroying+a+Board" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroying a Board</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test case for destroying an existing board.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="destroying+a+Board-source">
+            <pre><span class="ruby-comment"># File test/system/boards_test.rb, line 54</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;destroying a Board&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">visit</span> <span class="ruby-identifier">boards_url</span>
+  <span class="ruby-identifier">page</span>.<span class="ruby-identifier">accept_confirm</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;Destroy&quot;</span>, <span class="ruby-value">match:</span> <span class="ruby-value">:first</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">assert_text</span> <span class="ruby-string">&quot;Board was successfully destroyed&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-destroying+a+Post" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroying a Post</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test case for destroying a post.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="destroying+a+Post-source">
+            <pre><span class="ruby-comment"># File test/system/posts_test.rb, line 35</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;destroying a Post&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">visit</span> <span class="ruby-identifier">posts_url</span>
+  <span class="ruby-identifier">page</span>.<span class="ruby-identifier">accept_confirm</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;Destroy&quot;</span>, <span class="ruby-value">match:</span> <span class="ruby-value">:first</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">assert_text</span> <span class="ruby-string">&quot;Post was successfully destroyed&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-should+create+board" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should create board</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test for the create action.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="should+create+board-source">
+            <pre><span class="ruby-comment"># File test/controllers/boards_controller_test.rb, line 33</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;should create board&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">assert_difference</span>(<span class="ruby-string">&#39;Board.count&#39;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">post</span> <span class="ruby-identifier">boards_url</span>, <span class="ruby-value">params:</span> { <span class="ruby-value">board:</span> { <span class="ruby-value">description:</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">description</span>, <span class="ruby-value">name:</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">name</span> } }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">assert_redirected_to</span> <span class="ruby-identifier">board_url</span>(<span class="ruby-constant">Board</span>.<span class="ruby-identifier">last</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-should+create+post" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should create post</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test for the create action.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="should+create+post-source">
+            <pre><span class="ruby-comment"># File test/controllers/posts_controller_test.rb, line 19</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;should create post&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">assert_difference</span>(<span class="ruby-string">&#39;Post.count&#39;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">post</span> <span class="ruby-identifier">posts_url</span>, <span class="ruby-value">params:</span> { <span class="ruby-value">post:</span> { <span class="ruby-value">board_id:</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">board_id</span>, <span class="ruby-value">body:</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">body</span>, <span class="ruby-value">poster:</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">poster</span>, <span class="ruby-value">subject:</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">subject</span> } }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">assert_redirected_to</span> <span class="ruby-identifier">post_url</span>(<span class="ruby-constant">Post</span>.<span class="ruby-identifier">last</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-should+destroy+board" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should destroy board</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test for the destroy action.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="should+destroy+board-source">
+            <pre><span class="ruby-comment"># File test/controllers/boards_controller_test.rb, line 64</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;should destroy board&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">assert_difference</span>(<span class="ruby-string">&#39;Board.count&#39;</span>, <span class="ruby-value">-1</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">delete</span> <span class="ruby-identifier">board_url</span>(<span class="ruby-ivar">@board</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">assert_redirected_to</span> <span class="ruby-identifier">boards_url</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-should+destroy+post" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should destroy post</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test for the destroy action.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="should+destroy+post-source">
+            <pre><span class="ruby-comment"># File test/controllers/posts_controller_test.rb, line 36</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;should destroy post&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">assert_difference</span>(<span class="ruby-string">&#39;Post.count&#39;</span>, <span class="ruby-value">-1</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">delete</span> <span class="ruby-identifier">post_url</span>(<span class="ruby-ivar">@post</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">assert_redirected_to</span> <span class="ruby-identifier">posts_url</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-should+get+edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should get edit</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test for the edit action.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="should+get+edit-source">
+            <pre><span class="ruby-comment"># File test/controllers/boards_controller_test.rb, line 50</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;should get edit&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">get</span> <span class="ruby-identifier">edit_board_url</span>(<span class="ruby-ivar">@board</span>)
+  <span class="ruby-identifier">assert_response</span> <span class="ruby-value">:success</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-should+get+index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should get index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test for the index action.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="should+get+index-source">
+            <pre><span class="ruby-comment"># File test/controllers/boards_controller_test.rb, line 19</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;should get index&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">get</span> <span class="ruby-identifier">boards_url</span>
+  <span class="ruby-identifier">assert_response</span> <span class="ruby-value">:success</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-should+get+new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should get new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test for the new action.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="should+get+new-source">
+            <pre><span class="ruby-comment"># File test/controllers/boards_controller_test.rb, line 26</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;should get new&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">get</span> <span class="ruby-identifier">new_board_url</span>
+  <span class="ruby-identifier">assert_response</span> <span class="ruby-value">:success</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-should+show+board" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should show board</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test for the show action.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="should+show+board-source">
+            <pre><span class="ruby-comment"># File test/controllers/boards_controller_test.rb, line 43</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;should show board&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">get</span> <span class="ruby-identifier">board_url</span>(<span class="ruby-ivar">@board</span>)
+  <span class="ruby-identifier">assert_response</span> <span class="ruby-value">:success</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-should+show+post" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should show post</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test for the show action.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="should+show+post-source">
+            <pre><span class="ruby-comment"># File test/controllers/posts_controller_test.rb, line 29</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;should show post&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">get</span> <span class="ruby-identifier">post_url</span>(<span class="ruby-ivar">@post</span>)
+  <span class="ruby-identifier">assert_response</span> <span class="ruby-value">:success</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-should+update+board" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should update board</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test for the update action.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="should+update+board-source">
+            <pre><span class="ruby-comment"># File test/controllers/boards_controller_test.rb, line 57</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;should update board&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">patch</span> <span class="ruby-identifier">board_url</span>(<span class="ruby-ivar">@board</span>), <span class="ruby-value">params:</span> { <span class="ruby-value">board:</span> { <span class="ruby-value">description:</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">description</span>, <span class="ruby-value">name:</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">name</span> } }
+  <span class="ruby-identifier">assert_redirected_to</span> <span class="ruby-identifier">board_url</span>(<span class="ruby-ivar">@board</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updating+a+Board" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updating a Board</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test case for updating an existing board.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="updating+a+Board-source">
+            <pre><span class="ruby-comment"># File test/system/boards_test.rb, line 40</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;updating a Board&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">visit</span> <span class="ruby-identifier">boards_url</span>
+  <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;Edit&quot;</span>, <span class="ruby-value">match:</span> <span class="ruby-value">:first</span>
+
+  <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;Description&quot;</span>, <span class="ruby-value">with:</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">description</span>
+  <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;Name&quot;</span>, <span class="ruby-value">with:</span> <span class="ruby-ivar">@board</span>.<span class="ruby-identifier">name</span>
+  <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;Update Board&quot;</span>
+
+  <span class="ruby-identifier">assert_text</span> <span class="ruby-string">&quot;Board was successfully updated&quot;</span>
+  <span class="ruby-identifier">click_on</span> <span class="ruby-string">&quot;Back&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-visiting+the+index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">visiting the index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provides test case for viewing the boards index.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="visiting+the+index-source">
+            <pre><span class="ruby-comment"># File test/system/boards_test.rb, line 19</span>
+<span class="ruby-identifier">test</span> <span class="ruby-string">&quot;visiting the index&quot;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">visit</span> <span class="ruby-identifier">boards_url</span>
+  <span class="ruby-identifier">assert_selector</span> <span class="ruby-string">&quot;h1&quot;</span>, <span class="ruby-value">text:</span> <span class="ruby-string">&quot;Boards&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

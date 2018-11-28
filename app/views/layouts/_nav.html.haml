@@ -1,5 +1,5 @@
 - @boards = Board.all
-- @pages = Page.all
+- @pages = Page.all.order(priority: :asc)
 %nav
   %p
     %span

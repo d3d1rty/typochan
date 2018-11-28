@@ -1,20 +1,21 @@
 require 'test_helper'
 
+##
+# = PostsControllerTest
+# Author::    Richard Davis
+# Copyright:: Copyright 2018-2019 Mushaka Solutions Inc.
+# License::   GNU Public License 3
+#
+# This is the test case for the Posts controller.
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  ##
+  # Sets up the test case.
   setup do
     @post = posts(:one)
   end
 
-  test "should get index" do
-    get posts_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_post_url
-    assert_response :success
-  end
-
+  ##
+  # Provides test for the create action.
   test "should create post" do
     assert_difference('Post.count') do
       post posts_url, params: { post: { board_id: @post.board_id, body: @post.body, poster: @post.poster, subject: @post.subject } }
@@ -23,21 +24,15 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_url(Post.last)
   end
 
+  ##
+  # Provides test for the show action.
   test "should show post" do
     get post_url(@post)
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_post_url(@post)
-    assert_response :success
-  end
-
-  test "should update post" do
-    patch post_url(@post), params: { post: { board_id: @post.board_id, body: @post.body, poster: @post.poster, subject: @post.subject } }
-    assert_redirected_to post_url(@post)
-  end
-
+  ##
+  # Provides test for the destroy action.
   test "should destroy post" do
     assert_difference('Post.count', -1) do
       delete post_url(@post)

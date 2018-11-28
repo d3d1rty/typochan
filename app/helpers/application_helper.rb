@@ -6,11 +6,17 @@
 #
 # Collection of helper methods to use across the application.
 module ApplicationHelper
-
   ##
-  # Adds method to renderer to scan for code blocks with a specific language,
-  # allowing for syntax highlighting.
+  # = CodeRayify
+  # Author::    Richard Davis
+  # Copyright:: Copyright 2018-2019 Mushaka Solutions Inc.
+  # License::   GNU Public License 3
+  #
+  # Creates a new renderer to allow syntax highlighting.
   class CodeRayify < Redcarpet::Render::HTML
+    ##
+    # Adds method to renderer to scan for code blocks with a specific language,
+    # allowing for syntax highlighting.
     def block_code(code, language)
       CodeRay.scan(code, language || :text).div
     end
