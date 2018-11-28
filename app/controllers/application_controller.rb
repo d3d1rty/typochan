@@ -12,6 +12,18 @@ class ApplicationController < ActionController::Base
 
   ##
   # Protects against directory traversal
+  def protect_user_resources
+    head 401 unless signed_in?
+  end
+
+  ##
+  # Protects against directory traversal
+  def protect_mod_resources
+    head 401 unless signed_in? && (current_user.mod? || current_user.admin?)
+  end
+
+  ##
+  # Protects against directory traversal
   def protect_admin_resources
     head 401 unless signed_in? && current_user.admin?
   end

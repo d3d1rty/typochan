@@ -6,9 +6,10 @@
 #
 # This controller provides methods for accessing post resources.
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show destroy]
-  before_action :set_board, only: %i[create show destroy]
-  before_action :protect_admin_resources, only: :destroy
+  before_action :set_post, only: %i[show flag unflag destroy]
+  before_action :set_board, only: %i[create show flag unflag destroy]
+  before_action :protect_mod_resources, only: %i[unflag destroy]
+  before_action :protect_user_resources, only: :flag
   invisible_captcha only: :create
 
   ##
@@ -30,6 +31,31 @@ class PostsController < ApplicationController
     else
       flash[:errors] = @post.errors.full_messages
       redirect_to board_path(@board)
+    end
+  end
+
+  ##
+  # POST /boards/:board_id/posts/:post_id/flag
+  def flag
+    @post.flagged = true
+
+    if @post.save
+      redirect_to board_post_path(@board, @post), notice: 'Post was successfully flagged.'
+    else
+      redirect_to board_post_path(@board, @post), notice: 'An error occurred when attempting to flag this post.'
+    end
+  end
+
+  ##
+  # POST /boards/:board_id/posts/:post_id/unflag
+  def unflag
+    @post.flagged = false
+    @post.cleared = true
+
+    if @post.save
+      redirect_to board_post_path(@board, @post), notice: 'Post was successfully unflagged.'
+    else
+      redirect_to board_post_path(@board, @post), notice: 'An error occurred when attempting to unflag this post.'
     end
   end
 

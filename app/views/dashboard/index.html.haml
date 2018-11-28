@@ -4,6 +4,9 @@
   .card-body-alt
     %ul
       %li
-        %p= link_to 'Manage Pages', pages_path
-      %li
-        %p= link_to 'Manage Boards', boards_path
+        %p= link_to 'Review Flagged Posts and Replies', dashboard_review_path
+      - if current_user.admin?
+        %li
+          %p= link_to 'Manage Pages', pages_path
+        %li
+          %p= link_to 'Manage Boards', boards_path

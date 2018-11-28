@@ -1,0 +1,18 @@
+.card
+  .card-header
+    %h1 Review Flagged Posts and Replies
+  .card-body-alt
+    %h2 Flagged Posts
+    - if @posts.empty?
+      %p There are currently no flagged posts to review.
+    - else
+      - @posts.each do |post|
+        %ul
+          %li= link_to post.subject, board_post_path(post.board, post)
+    %h2 Flagged Replies
+    - if @replies.empty?
+      %p There are currently no flagged replies to review.
+    - else
+      - @replies.each do |reply|
+        %ul
+          %li= link_to "Reply ##{reply.id}", board_post_path(reply.post.board, reply.post, anchor: "#{reply.id}")

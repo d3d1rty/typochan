@@ -6,11 +6,12 @@
 #
 # This controller provides methods for accessing reply resources.
 class RepliesController < ApplicationController
-  before_action :set_reply, only: :destroy
-  before_action :set_post, only: %i[create destroy]
+  before_action :set_reply, only: %i[flag unflag destroy]
+  before_action :set_post, only: %i[create flag unflag destroy]
   before_action :set_post_replies, only: :create
-  before_action :set_board, only: %i[create destroy]
-  before_action :protect_admin_resources, only: :destroy
+  before_action :set_board, only: %i[create flag unflag destroy]
+  before_action :protect_mod_resources, only: %i[unflag destroy]
+  before_action :protect_user_resources, only: :flag
   invisible_captcha only: :create
 
   ##
@@ -26,6 +27,31 @@ class RepliesController < ApplicationController
     else
       flash[:errors] = @reply.errors.full_messages
       redirect_to board_post_path(@board, @post)
+    end
+  end
+
+  ##
+  # POST /boards/:board_id/posts/:post_id/replies/:reply_id/flag
+  def flag
+    @reply.flagged = true
+
+    if @reply.save
+      redirect_to board_post_path(@board, @post), notice: 'Reply was successfully flagged.'
+    else
+      redirect_to board_post_path(@board, @post), notice: 'An error occurred when attempting to flag this reply.'
+    end
+  end
+
+  ##
+  # POST /boards/:board_id/posts/:post_id/replies/:reply_id/unflag
+  def unflag
+    @reply.flagged = false
+    @reply.cleared = true
+
+    if @reply.save
+      redirect_to board_post_path(@board, @post), notice: 'Reply was successfully unflagged.'
+    else
+      redirect_to board_post_path(@board, @post), notice: 'An error occurred when attempting to unflag this reply.'
     end
   end
 

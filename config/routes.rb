@@ -29,13 +29,23 @@ Rails.application.routes.draw do
   resource :session, controller: 'sessions', only: %i[create new]
 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+  get 'dashboard/review', to: 'dashboard#review', as: 'dashboard_review'
 
   resources :boards do
     member do
       get 'feed'
     end
     resources :posts do
-      resources :replies, only: %i[create destroy]
+      member do
+        post 'flag'
+        post 'unflag'
+      end
+      resources :replies, only: %i[create destroy] do
+        member do
+          post 'flag'
+          post 'unflag'
+        end
+      end
     end
   end
 

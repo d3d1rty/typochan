@@ -1,8 +1,15 @@
 #original-post.card
   .card-header
-    - if signed_in? && current_user.admin?
+    - if signed_in?
       %p
-        = link_to 'Destroy', board_post_path(@board, @post), method: :delete, data: { confirm: 'Are you sure?' }
+        - if @post.flagged != true && @post.cleared != true
+          = link_to 'Flag', flag_board_post_path(@board, @post), method: :post
+          \|
+        - if current_user.admin? || current.user.mod?
+          - if @post.flagged == true
+            = link_to 'Unflag', unflag_board_post_path(@board, @post), method: :post
+            \|
+          = link_to 'Destroy', board_post_path(@board, @post), method: :delete, data: { confirm: 'Are you sure?' }
     %p= "\"#{@post.subject}\" - #{@post.poster}"
     %p= "#{time_ago_in_words(@post.created_at)} ago"
   .card-body
@@ -22,9 +29,16 @@
 - @replies.each do |reply|
   .post-reply.card{ id: reply.id }
     .card-header
-      - if signed_in? && current_user.admin?
+      - if signed_in?
         %p
-          = link_to 'Destroy', board_post_reply_path(@board, @post, reply), method: :delete, data: { confirm: 'Are you sure?' }
+          - if reply.flagged != true && reply.cleared != true
+            = link_to 'Flag', flag_board_post_reply_path(@board, @post, reply), method: :post
+            \|
+          - if current_user.admin? || current_user.mod?
+            - if reply.flagged == true
+              = link_to 'Unflag', unflag_board_post_reply_path(@board, @post, reply), method: :post
+              \|
+            = link_to 'Destroy', board_post_reply_path(@board, @post, reply), method: :delete, data: { confirm: 'Are you sure?' }
       %p
         = reply.poster
         \-
