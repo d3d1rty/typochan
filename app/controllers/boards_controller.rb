@@ -99,6 +99,6 @@ class BoardsController < ApplicationController
   ##
   # Processes parameters for board requests.
   def board_params
-    params.require(:board).permit(:name, :description)
+    params.require(:board).permit(:name, :priority, :description)
   end
 end

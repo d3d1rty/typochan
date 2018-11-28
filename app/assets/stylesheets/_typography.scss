@@ -52,20 +52,26 @@ ul {
   list-style-type: circle;
 }
 
-.code, pre {
+.code, code, pre {
   font-family: 'inconsolataregular';
   background: $fog;
 }
 
 .code {
-  padding: 2px 4px;
+  padding: 0;
   vertical-align: text-bottom;
   overflow: auto;
 }
 
 pre {
+  margin: 0;
   padding: 1em;
   border-left: 2px solid $blue;
+}
+
+code {
+  padding: .25em;
+
 }
 
 blockquote {

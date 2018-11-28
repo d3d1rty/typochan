@@ -1,4 +1,4 @@
-- @boards = Board.all
+- @boards = Board.all.order(priority: :asc)
 - @pages = Page.all.order(priority: :asc)
 %nav
   %p
