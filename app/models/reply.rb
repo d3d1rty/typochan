@@ -6,7 +6,7 @@
 #
 # This model provides validations and methods for replies.
 class Reply < ApplicationRecord
-  belongs_to :post, touch: true
+  belongs_to :post
   has_closure_tree dependent: :destroy
   validates :body, presence: true, length: { maximum: 10000 }
 end

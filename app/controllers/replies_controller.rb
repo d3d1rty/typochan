@@ -23,6 +23,7 @@ class RepliesController < ApplicationController
     @reply.parent = Reply.find(reply_params[:parent_id]) if reply_to_valid?(reply_params[:parent_id].to_i, get_reply_ids(@post_replies))
 
     if @reply.save
+      @post.touch
       redirect_to board_post_path(@board, @post), notice: 'Reply was successfully created.'
     else
       flash[:errors] = @reply.errors.full_messages
