@@ -6,12 +6,13 @@
 @import 'dashboard';
 @import 'boards';
 @import 'posts';
+@import 'pages';
 
 html, body {
   nav {
     color: $charcoal;
     background-color: white;
-    margin: 0 0 1em 0;
+    margin: 0 0 3em 0;
     font-size: 85%;
 
     p {
@@ -35,24 +36,20 @@ html, body {
         }
       }
 
-    .nav-pages {
-      width: 100%;
+      .nav-pages {
+        width: 100%;
 
-      @media screen and (min-width: 540px) {
+        @media screen and (min-width: 540px) {
+        }
+
       }
+      .nav-boards {
+        width: 100%;
 
-    }
-    .nav-boards {
-      width: 100%;
+        @media screen and (min-width: 540px) {
+        }
 
-      @media screen and (min-width: 540px) {
       }
-
-    }
     }
   }
-}
-
-.code {
-  overflow: auto;
 }

@@ -31,8 +31,46 @@ h2 {
 }
 
 p {
+  color: $charcoal;
+}
+
+a {
+  color: $blue;
+
+  &:hover {
+    color: $dark-blue;
+    text-decoration: none;
+  }
+}
+
+ul, ol {
+  color: $charcoal;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+.code, pre {
+  font-family: 'inconsolataregular';
+  background: $fog;
+}
+
+.code {
+  padding: 2px 4px;
+  vertical-align: text-bottom;
+  overflow: auto;
 }
 
 pre {
-  font-family: 'inconsolataregular';
+  padding: 1em;
+  border-left: 2px solid $blue;
+}
+
+blockquote {
+  font-family: open_sansregular;
+  font-size: 110%;
+  font-style: italic;
+  background: $fog;
+  padding: 1em;
 }

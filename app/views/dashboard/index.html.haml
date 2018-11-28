@@ -1,4 +1,9 @@
-%h1 Dashboard
-%p= link_to 'Manage Pages', pages_path
-%p= link_to 'Manage Boards', boards_path
-%p= link_to 'Review Flagged Posts', '#'
+.card
+  .card-header
+    %h1 Dashboard
+  .card-body-alt
+    %ul
+      %li
+        %p= link_to 'Manage Pages', pages_path
+      %li
+        %p= link_to 'Manage Boards', boards_path

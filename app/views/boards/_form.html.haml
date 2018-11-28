@@ -1,8 +1,15 @@
-.field
-  = form.label :name
-  %br
-  = form.text_field :name
-.field
-  = form.label :description
-  %br
-  = form.text_area :description
+= form_for @board do |form|
+  .form
+    - if flash[:errors]
+      #new-page-form-errors.form-errors
+        %ul
+          - flash[:errors].each do |error|
+            %li= error
+    .form-group
+      = form.label :name
+      = form.text_field :name
+    .form-group
+      = form.label :description
+      = form.text_area :description
+    .form-action
+      = form.submit 'Create'

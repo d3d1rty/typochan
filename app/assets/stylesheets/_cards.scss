@@ -30,6 +30,11 @@
 
     a {
       color: $snow;
+
+      &:hover {
+        color: $fog;
+        text-decoration: none;
+      }
     }
   }
 
@@ -37,15 +42,6 @@
     padding: 1em;
     border-left: 1px solid $smoke;
     border-right: 1px solid $smoke;
-
-    a {
-      color: $blue;
-
-      &:hover {
-        color: $dark-blue;
-        text-decoration: none;
-      }
-    }
   }
 
   .card-body-alt {

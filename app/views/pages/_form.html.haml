@@ -5,7 +5,6 @@
         %ul
           - flash[:errors].each do |error|
             %li= error
-    = invisible_captcha
     .form-group
       = f.label :title
       = f.text_field :title

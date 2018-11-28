@@ -1,9 +1,7 @@
-= render 'layouts/errors', object: @board
-%h1 Edit board
-= form_for @board do |form|
-  = render partial: '/boards/form', object: form
-  .actions
-    = form.submit 'Submit'
-= link_to 'Show', @board
-\|
-= link_to 'Back', boards_path
+#edit-board-form.card
+  .card-header
+    %h1 Edit board
+  .card-body
+    = render partial: '/boards/form'
+  .card-footer
+    = link_to 'Back', boards_path
