@@ -6,8 +6,8 @@
 #
 # This controller provides methods for accessing board resources.
 class BoardsController < ApplicationController
-  before_action :set_board, only: %i[show edit update destroy]
-  before_action :set_posts, only: %i[show]
+  before_action :set_board, only: %i[show feed edit update destroy]
+  before_action :set_posts, only: %i[show feed]
   before_action :require_login, only: %i[index new edit create update destroy]
   before_action :protect_admin_resources, only: %i[index new edit create update destroy]
 
@@ -21,6 +21,14 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     @post = Post.new
+  end
+
+  ##
+  # Renders RSS feed
+  def feed
+    respond_to do |format|
+      format.rss { render layout: false }
+    end
   end
 
   # GET /boards/new

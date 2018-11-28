@@ -1,3 +1,10 @@
+##
+# = PostsController
+# Author::    Richard Davis
+# Copyright:: Copyright 2018-2019 Mushaka Solutions Inc.
+# License::   GNU Public License 3
+#
+# This controller provides methods for accessing post resources.
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
   before_action :set_board, only: %i[create show destroy]

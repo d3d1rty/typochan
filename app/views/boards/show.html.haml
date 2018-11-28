@@ -1,5 +1,8 @@
+= auto_discovery_link_tag :rss, feed_board_url(@board, format: :rss)
 %h1= @board.name
-%p#board-description= @board.description
+%p#board-description
+  = @board.description
+  = link_to 'Subscribe', feed_board_url(@board, format: :rss)
 #post-container
   - @posts.each do |post|
     .post-item.card
