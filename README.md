@@ -24,9 +24,10 @@ cd typochan
 bundle
 ```
 
-Then, create the `.env` file and enable user signup.
+Then, create the `.env` file. Set the chan name and enable user signup.
 
 ```
+CHAN_NAME="Typochan"
 ALLOW_SIGNUP=true
 ```
 
@@ -37,8 +38,17 @@ rails db:create
 rails db:migrate
 ```
 
-To signup, fire up the server and navigate to `http://localhost:3000/sign_up` (the link is not displayed anywhere, so you'll need to manually enter the URL any time you need to signup a user). You can disable signup through the `.env` file in your development environment or through the `ALLOW_SIGNUP` environment variable in your production environment.
+Since the application roots to a page titled 'Home' that doesn't exist at the time of initial application creation, you'll need to first sign up, make yourself an admin, and then create a page title 'Home' through the dashboard.
 
+To signup, fire up the server and navigate to `http://localhost:3000/sign_up`. You can disable signup through the `.env` file in your development environment or through the `ALLOW_SIGNUP` environment variable in your production environment.
+
+Then, set yourself as an admin by using `psql` to connect to the database and executing the following query:
+
+```
+update users set admin = true where id = 1;
+```
+
+Now, navigate to `http://localhost:3000/dashboard/` and create the 'Home' page. It is recommended to set the priority for this page to 1 so that it is the first page ordered in the navigation menu. Once the 'Home' page has been created, you are done with the initial application configuration.
 
 ### Usage
 Usage instructions will be published as features are rolled out.
@@ -59,6 +69,8 @@ bundle exec rubocop foo/bar.rb
 ```
 
 ### Documentation
+The application documentation can be found [here](https://mushaka.solutions/typochan/).
+
 Comment any code contributions according to the existing conventions within the project.
 Reference the examples listed below:
 
@@ -68,7 +80,7 @@ Example top-level comment:
 ##
 # = ClassNameGoesHere
 # Author::    Richard Davis (+/- individual contributors)
-# Copyright:: Copyright 2017 Mushaka Solutions Inc
+# Copyright:: Copyright 2018 Mushaka Solutions Inc
 # License::   GNU Public License 3
 #
 # This is a class that is something and does something.
@@ -94,4 +106,6 @@ Integration tests should be written for all classes and methods. The test suite
 can be run manually `bundle exec rake test`.
 
 ## TODO
-* Everything.
+* Tests.
+* Full documentation.
+* Post/reply preview functionality.
