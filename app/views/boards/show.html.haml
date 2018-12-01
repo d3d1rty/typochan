@@ -1,5 +1,5 @@
 = auto_discovery_link_tag :rss, feed_board_url(@board, format: :rss)
-%h1= @board.name
+%h1= "/#{@board.short_name}/ - #{@board.name}"
 %p#board-description
   = @board.description
   = link_to 'Subscribe', feed_board_url(@board, format: :rss)

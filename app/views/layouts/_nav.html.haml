@@ -24,8 +24,5 @@
       - @boards.each_with_index do |board, count|
         - if count == 0
           \|
-          = link_to board.name, board_path(board)
-          \|
-        - else
-          = link_to board.name, board_path(board)
-          \|
+        = link_to board.short_name, board_path(board), class: 'nav-boards'
+        \|

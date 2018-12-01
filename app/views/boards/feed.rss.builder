@@ -3,7 +3,7 @@
 xml.instruct! :xml, version: '1.0'
 xml.rss version: '2.0' do
   xml.channel do
-    xml.title "#{@board.name} feed | #{ENV['CHAN_NAME']}"
+    xml.title "/#{@board.short_name}/ - #{@board.name} feed | #{ENV['CHAN_NAME']}"
     xml.author "Users of #{ENV['CHAN_NAME']}"
     xml.description @board.description
     xml.link board_url(@board)

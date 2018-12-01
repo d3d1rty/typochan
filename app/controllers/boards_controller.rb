@@ -81,7 +81,7 @@ class BoardsController < ApplicationController
   ##
   # Sets board for an action.
   def set_board
-    @board = Board.find(params[:id])
+    @board = Board.friendly.find(params[:id])
   end
 
   ##
@@ -93,6 +93,6 @@ class BoardsController < ApplicationController
   ##
   # Processes parameters for board requests.
   def board_params
-    params.require(:board).permit(:name, :priority, :description)
+    params.require(:board).permit(:name, :short_name, :priority, :description)
   end
 end
