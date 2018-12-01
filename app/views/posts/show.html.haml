@@ -89,7 +89,7 @@
     preview_container.appendChild(preview_node);
   };
 
-  document.addEventListener('ajax:success', function(event) {
+  document.querySelector('#preview-reply-link').addEventListener('ajax:success', function(event) {
     resetPreview();
     document.querySelector('#preview-container').setAttribute('style', 'visibility:visible;');
     let xhr = event.detail[2];
