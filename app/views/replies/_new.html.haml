@@ -1,5 +1,9 @@
 #new-reply-form.card
   .card-header
     %h1 New Reply
-  .card-body-alt
+  .card-body
     = render 'replies/form'
+    #preview-container
+      #preview
+  .card-footer
+    = link_to 'Generate a Preview', preview_path, method: :post, id: 'preview-reply-link', 'data-remote': true, onclick: 'previewReply()', 'data-params': ''

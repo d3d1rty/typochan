@@ -6,7 +6,7 @@
 #
 # This controller provides methods for accessing reply resources.
 class RepliesController < ApplicationController
-  before_action :set_reply, only: %i[flag unflag destroy]
+  before_action :set_reply, only: %i[preview flag unflag destroy]
   before_action :set_post, only: %i[create flag unflag destroy]
   before_action :set_post_replies, only: :create
   before_action :set_board, only: %i[create flag unflag destroy]
@@ -55,6 +55,7 @@ class RepliesController < ApplicationController
       redirect_to board_post_path(@board, @post), notice: 'An error occurred when attempting to unflag this reply.'
     end
   end
+
 
   ##
   # DELETE /boards/:board_id/posts/:post_id/replies/:reply_id
@@ -108,6 +109,6 @@ class RepliesController < ApplicationController
   ##
   # Process parameters for reply requests.
   def reply_params
-    params.require(:reply).permit(:poster, :body, :parent_id, :post_id, :board_id)
+    params.require(:reply).permit(:poster, :body, :preview, :parent_id, :post_id, :board_id)
   end
 end

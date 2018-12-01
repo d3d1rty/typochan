@@ -51,5 +51,7 @@ Rails.application.routes.draw do
 
   resources :pages, only: %i[index show new edit create update destroy]
 
+  post 'preview', to: 'preview#preview', as: 'preview'
+
   root 'pages#show', as: 'home', id: 'home'
 end
