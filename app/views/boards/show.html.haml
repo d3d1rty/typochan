@@ -13,3 +13,27 @@
         %p.post-item-subject
           = link_to post.subject, board_post_path(@board, post)
 = render partial: '/posts/new', objects: [@board, @post]
+:javascript
+  function previewPost() {
+    let text = document.querySelector('#post_body').value;
+    document.querySelector('#preview-post-link').setAttribute('data-params', '[preview]text='+text);
+  };
+
+  function resetPreview() {
+    let preview_container = document.querySelector('#preview-container');
+    while (preview_container.firstChild) {
+      preview_container.removeChild(preview_container.firstChild);
+    }
+
+    let preview_node = document.createElement('div');
+    preview_node.setAttribute('id', 'preview');
+    preview_container.appendChild(preview_node);
+  };
+
+  document.querySelector('#preview-post-link').addEventListener('ajax:success', function(event) {
+    resetPreview();
+    document.querySelector('#preview-container').setAttribute('style', 'visibility:visible;');
+    let xhr = event.detail[2];
+    document.querySelector('#preview').insertAdjacentHTML('afterend', xhr.response);
+    window.location.href = '#preview-container';
+  }, false);

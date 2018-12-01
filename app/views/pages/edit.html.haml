@@ -3,5 +3,33 @@
     %h1 Edit Page
   .card-body
     = render partial: '/pages/form'
+    #preview-container
+      #preview
   .card-footer
     = link_to 'Back', pages_path
+    \/
+    = link_to 'Generate a Preview', preview_path, method: :post, id: 'preview-page-link', 'data-remote': true, onclick: 'previewPage()', 'data-params': ''
+:javascript
+  function previewPage() {
+    let text = document.querySelector('#page_body').value;
+    document.querySelector('#preview-page-link').setAttribute('data-params', '[preview]text='+text);
+  };
+
+  function resetPreview() {
+    let preview_container = document.querySelector('#preview-container');
+    while (preview_container.firstChild) {
+      preview_container.removeChild(preview_container.firstChild);
+    }
+
+    let preview_node = document.createElement('div');
+    preview_node.setAttribute('id', 'preview');
+    preview_container.appendChild(preview_node);
+  };
+
+  document.querySelector('#preview-page-link').addEventListener('ajax:success', function(event) {
+    resetPreview();
+    document.querySelector('#preview-container').setAttribute('style', 'visibility:visible;');
+    let xhr = event.detail[2];
+    document.querySelector('#preview').insertAdjacentHTML('afterend', xhr.response);
+    window.location.href = '#preview-container';
+  }, false);

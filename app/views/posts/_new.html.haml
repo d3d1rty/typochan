@@ -1,5 +1,33 @@
 #new-post-form.card
   .card-header
     %h1 New Post
-  .card-body-alt
+  .card-body
     = render 'posts/form'
+    #preview-container
+      #preview
+  .card-footer
+    = link_to 'Generate a Preview', preview_path, method: :post, id: 'preview-post-link', 'data-remote': true, onclick: 'previewPost()', 'data-params': ''
+:javascript
+  function previewPost() {
+    let text = document.querySelector('#post_body').value;
+    document.querySelector('#preview-post-link').setAttribute('data-params', '[preview]text='+text);
+  };
+
+  function resetPreview() {
+    let preview_container = document.querySelector('#preview-container');
+    while (preview_container.firstChild) {
+      preview_container.removeChild(preview_container.firstChild);
+    }
+
+    let preview_node = document.createElement('div');
+    preview_node.setAttribute('id', 'preview');
+    preview_container.appendChild(preview_node);
+  };
+
+  document.querySelector('#preview-post-link').addEventListener('ajax:success', function(event) {
+    resetPreview();
+    document.querySelector('#preview-container').setAttribute('style', 'visibility:visible;');
+    let xhr = event.detail[2];
+    document.querySelector('#preview').insertAdjacentHTML('afterend', xhr.response);
+    window.location.href = '#preview-container';
+  }, false);
