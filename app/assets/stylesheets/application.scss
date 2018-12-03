@@ -1,3 +1,4 @@
+@import 'normalize';
 @import 'variables';
 @import 'typography';
 @import 'cards';
@@ -8,69 +9,70 @@
 @import 'posts';
 @import 'pages';
 
-html, body {
-  nav {
-    color: $charcoal;
-    background-color: white;
-    margin: 0 0 1em 0;
-    font-size: 85%;
-    transition: margin 0.5s;
+body {
+  #site-header {
+    margin: 0 0 0.5rem;
 
-    p {
-      margin: .25em;
-      //display: flex;
-      //flex-flow: row wrap;
-      //text-align: center;
+    #top-navbar {
+      background-color: $charcoal;
+      color: $snow;
+      padding: 0.5rem 0;
+      font-size: 85%;
+      border-bottom: 1px solid $smoke;
 
-      @media screen and (min-width: 540px) {
+      a {
+        color: $snow;
+
+        &:hover {
+          color: $light-blue;
+        }
       }
 
-      span {
-        margin: auto;
+      ul.navbar-links {
+        display: inline;
+        margin: 0 0.5rem 0;
+        padding: 0;
 
-        a {
-          color: $blue;
+        li {
+          display: inline;
+          white-space: nowrap;
 
-          &:hover {
-            color: $dark-blue;
+          &:not(:last-child):after {
+            content: "/";
+            color: $smoke;
           }
         }
-      }
 
-      .nav-pages {
-
-        @media screen and (min-width: 540px) {
+        &:before {
+          content: "[";
+          color: $smoke;
         }
 
-      }
-      .nav-boards {
-        font-family: 'inconsolataregular';
-        font-size: 115%;
-
-        @media screen and (min-width: 540px) {
+        &:after {
+          content: "]";
+          color: $smoke;
         }
-
       }
     }
-  }
 
-  .hidden {
-    margin-bottom: 2em;
+    .hidden {
+      margin-bottom: 2em;
 
-    #flash-notice {
-      text-align: center;
-      background-color: $light-blue;
-      margin: 0 .5em 1em .5em;
-      padding: 1em;
-      border: 1px solid $blue;
+      #flash-notice {
+        text-align: center;
+        background-color: $light-blue;
+        margin: 0 .5em 1em .5em;
+        padding: 1em;
+        border: 1px solid $blue;
 
-      p {
-      color: $dark-blue;
+        p {
+          color: $dark-blue;
+        }
       }
     }
-  }
 
-  #preview-container {
-    visibility: hidden;
+    #preview-container {
+      visibility: hidden;
+    }
   }
 }

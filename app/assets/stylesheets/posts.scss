@@ -1,2 +1,34 @@
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .poster, .posted-at {
+    width: 33%;
+    color: $snow;
+  }
+
+  .posted-at {
+    text-align: right;
+  }
+
+  .post-menu {
+    text-align: center;
+  }
+
+  h1 {
+    flex-grow: 1;
+  }
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .replies {
+  }
+}
+
 #original-post {
 }

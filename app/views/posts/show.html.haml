@@ -1,7 +1,9 @@
 #original-post.card
   .card-header
-    - if signed_in?
-      %p
+    .poster
+      = "\"#{@post.subject}\" - #{@post.poster}"
+    .post-menu
+      - if signed_in?
         - if @post.flagged != true && @post.cleared != true
           = link_to 'Flag', flag_board_post_path(@board, @post), method: :post
           \|
@@ -10,16 +12,16 @@
             = link_to 'Unflag', unflag_board_post_path(@board, @post), method: :post
             \|
           = link_to 'Destroy', board_post_path(@board, @post), method: :delete, data: { confirm: 'Are you sure?' }
-    %p= "\"#{@post.subject}\" - #{@post.poster}"
-    %p= "#{time_ago_in_words(@post.created_at)} ago"
+    .posted-at
+      = "#{time_ago_in_words(@post.created_at)} ago"
   .card-body
     %p
       = markdown(@post.body).html_safe
   .card-footer
-    = link_to 'Add a Reply', '#new-reply-form', 'onclick': "addReply('OP');", remote: true
-    - unless @replies.empty?
-      %p
-        Replies:
+    .add-reply
+      = link_to 'Add a Reply', '#new-reply-form', 'onclick': "addReply('OP');", remote: true
+    .replies
+      - unless @replies.empty?
         - @replies.each_with_index do |reply, index|
           - if index.zero?
             \|
@@ -29,8 +31,12 @@
 - @replies.each do |reply|
   .post-reply.card{ id: reply.id }
     .card-header
-      - if signed_in?
-        %p
+      .poster
+        = reply.poster
+        \-
+        = "##{reply.id}"
+      .post-menu
+        - if signed_in?
           - if reply.flagged != true && reply.cleared != true
             = link_to 'Flag', flag_board_post_reply_path(@board, @post, reply), method: :post
             \|
@@ -39,11 +45,8 @@
               = link_to 'Unflag', unflag_board_post_reply_path(@board, @post, reply), method: :post
               \|
             = link_to 'Destroy', board_post_reply_path(@board, @post, reply), method: :delete, data: { confirm: 'Are you sure?' }
-      %p
-        = reply.poster
-        \-
-        = "##{reply.id}"
-      %p= "#{time_ago_in_words(reply.created_at)} ago"
+      .posted-at
+        = "#{time_ago_in_words(reply.created_at)} ago"
     .card-body
       %p
         %b Replying to:

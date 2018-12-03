@@ -1,13 +1,13 @@
 .card {
   background-color: white;
-  margin: auto;
-  margin-top: 1em;
-  padding: 0;
-  width: 98%;
   word-wrap: break-word;
+  width: 75%;
+  margin: 1em auto;
+  padding: 0;
 
-  @media screen and (min-width: 540px) {
-    width: 75%;
+  @media screen and (max-width: 540px) {
+    width: 90%;
+    margin: 1em auto;
   }
 
   .card-header {
@@ -15,7 +15,7 @@
     margin: 0;
     padding: .5em;
     border: 1px solid $smoke;
-    border-radius: 5px 5px 0 0;
+    line-height: 1.5;
     font-size: 85%;
 
     h1 {
@@ -49,7 +49,6 @@
     border-left: 1px solid $smoke;
     border-right: 1px solid $smoke;
     border-bottom: 1px solid $smoke;
-    border-radius: 0 0 5px 5px;
 
     a {
       color: $blue;
@@ -66,8 +65,9 @@
     margin: 0;
     padding: .5em;
     border: 1px solid $smoke;
-    border-radius: 0 0 5px 5px;
     font-size: 85%;
+    line-height: 1.5;
+    text-align: right;
 
     p {
       margin: 0;
