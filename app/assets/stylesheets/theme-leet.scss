@@ -1,0 +1,40 @@
+body {
+  background-color: #000;
+  font-family: 'inconsolataregular';
+
+  #site-header, #site-footer {
+    .navbar {
+      border: 0;
+      background-color: #333;
+    }
+  }
+
+  * {
+    color: #FFF;
+    font-family: monospace;
+  }
+}
+
+textarea, input {
+  background-color: #222;
+  color: #880;
+  border: 0;
+}
+
+.card {
+  background-color: #111;
+
+  .card-header {
+    background-color: #333;
+    border: 0;
+  }
+
+  .card-body, .card-body-alt {
+    border: 0;
+  }
+
+  .card-footer {
+    background-color: #111;
+    border: 0;
+  }
+}

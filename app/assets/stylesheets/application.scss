@@ -10,64 +10,72 @@
 @import 'pages';
 
 body {
-  #site-header {
-    margin: 0 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
-    #top-navbar {
-      background-color: $charcoal;
+  .navbar {
+    background-color: $charcoal;
+    color: $snow;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    a {
       color: $snow;
-      padding: 0.5rem 0;
-      font-size: 85%;
-      border-bottom: 1px solid $smoke;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      flex-wrap: wrap;
 
-      a {
-        color: $snow;
-
-        &:hover {
-          color: $light-blue;
-        }
-      }
-
-      ul.navbar-links {
-        display: inline;
-        margin: 0 0.5rem 0;
-        padding: 0;
-        line-height: 1.25;
-
-        @media screen and (max-width: 540px) {
-        }
-
-        li {
-          display: inline;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-
-          &:not(:last-child):after {
-            content: "/";
-            color: $smoke;
-          }
-        }
-
-        &:before {
-          content: "[";
-          color: $smoke;
-        }
-
-        &:after {
-          content: "]";
-          color: $smoke;
-        }
+      &:hover {
+        color: $light-blue;
       }
     }
 
+    ul.navbar-links {
+      display: inline;
+      margin: 0 0.5rem 0;
+      padding: 0;
+      line-height: 1.25;
+
+      @media screen and (max-width: 540px) {
+      }
+
+      li {
+        display: inline;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:not(:last-child):after {
+          content: "/";
+          color: $smoke;
+        }
+      }
+
+      &:before {
+        content: "[";
+        color: $smoke;
+      }
+
+      &:after {
+        content: "]";
+        color: $smoke;
+      }
+    }
+  }
+
+  #site-header {
+    margin: 0 0 0.5rem;
+
+    .navbar {
+      border-bottom: 1px solid $smoke;
+    }
+
     .hidden {
-      margin-bottom: 2em;
+      margin: 0;
 
       #flash-notice {
         text-align: center;
@@ -85,5 +93,15 @@ body {
     #preview-container {
       visibility: hidden;
     }
+  }
+
+  #site-footer {
+    .navbar {
+      border-top: 1px solid $smoke;
+    }
+  }
+
+  main {
+    flex: 1;
   }
 }

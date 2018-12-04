@@ -1,6 +1,6 @@
 - @boards = Board.all.order(priority: :asc)
 - @pages = Page.all.order(priority: :asc)
-%nav#top-navbar
+%nav#top-navbar.navbar
   %ul#page-links.navbar-links
     - @pages.each do |page|
       %li

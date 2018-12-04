@@ -1,0 +1,12 @@
+%nav.navbar
+  %ul#theme-links.navbar-links
+    %li
+      = link_to "user", "javascript:void(0);", :onclick => "setUserTheme()"
+    - Dir.glob("app/assets/stylesheets/theme-*").each do |fp|
+      %li
+        - name = File.basename(fp, File.extname(fp))[6, fp.size]
+        - relative_path = fp.gsub("app/assets/stylesheets/","")
+        = link_to name, "javascript:void(0);",
+          onclick: "changeTheme(\"#{name}\")",
+          id: "theme-link-#{name}",
+          data: { link: asset_path(relative_path) }

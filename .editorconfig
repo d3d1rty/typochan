@@ -1,5 +1,5 @@
 root=true
 
-[*.{css,scss,rb}]
+[*.{css,scss,rb,js}]
 indent_style = space
 indent_size = 2
