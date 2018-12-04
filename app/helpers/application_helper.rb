@@ -22,7 +22,15 @@ module ApplicationHelper
     end
 
     def block_quote(quote)
-      %(<blockquote>#{quote.insert(3, '&gt;')}</blockquote>)
+      new_quote = []
+      quote.lines.to_a.each_with_index do |line, index|
+        if line.starts_with?('<p>')
+          new_quote.push(line.insert(3, '>'))
+        else
+          new_quote.push(line.insert(0, '>'))
+        end
+      end
+      %(<blockquote>#{new_quote.join('')}</blockquote>)
     end
   end
 
