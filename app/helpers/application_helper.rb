@@ -20,6 +20,10 @@ module ApplicationHelper
     def block_code(code, language)
       CodeRay.scan(code, language || :text).div
     end
+
+    def block_quote(quote)
+      %(<blockquote>#{quote.insert(3, '&gt;')}</blockquote>)
+    end
   end
 
   ##
