@@ -8,6 +8,7 @@
 @import 'boards';
 @import 'posts';
 @import 'pages';
+@import 'hljs-xcode';
 
 body {
   display: flex;
@@ -104,4 +105,8 @@ body {
   main {
     flex: 1;
   }
+}
+
+.hljs {
+  background: none;
 }
