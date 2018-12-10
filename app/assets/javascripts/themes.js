@@ -38,9 +38,6 @@ function setTheme() {
     }
     theme.setAttribute("id", "theme-" + name);
     theme.setAttribute("class", "theme-css");
-
-    hljs.initHighlighting();
-
     document.getElementsByTagName("head")[0].appendChild(theme);
   }
 }
