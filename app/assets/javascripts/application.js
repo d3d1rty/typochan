@@ -15,5 +15,3 @@
 //= require turbolinks
 //= require themes
 //= require_tree .
-
-hljs.initHighlightingOnLoad();
