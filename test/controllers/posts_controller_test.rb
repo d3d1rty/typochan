@@ -11,6 +11,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   ##
   # Sets up the test case.
   setup do
+    @user = User.create!(email: 'example@example.com', password: 'letmein', handle: 'test', admin: true)
+    @board = boards(:one)
     @post = posts(:one)
   end
 
@@ -18,16 +20,16 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   # Provides test for the create action.
   test "should create post" do
     assert_difference('Post.count') do
-      post posts_url, params: { post: { board_id: @post.board_id, body: @post.body, poster: @post.poster, subject: @post.subject } }
+      post board_posts_path(@board), params: { post: { board_id: boards(:one).id, body: 'This is a test.', poster: @user, subject: 'This is a test' } }
     end
 
-    assert_redirected_to post_url(Post.last)
+    assert_redirected_to board_post_path(@board, Post.last)
   end
 
   ##
   # Provides test for the show action.
   test "should show post" do
-    get post_url(@post)
+    get board_post_path(@board, @post)
     assert_response :success
   end
 
@@ -35,9 +37,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   # Provides test for the destroy action.
   test "should destroy post" do
     assert_difference('Post.count', -1) do
-      delete post_url(@post)
+      delete board_post_path(@board, @post, as: @user)
     end
 
-    assert_redirected_to posts_url
+    assert_redirected_to board_path(@board)
   end
 end
