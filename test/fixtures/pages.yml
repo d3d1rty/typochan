@@ -6,6 +6,6 @@ one:
   slug: MyString
 
 two:
-  title: MyString
-  body: MyText
-  slug: MyString
+  title: MyStringTwo
+  body: MyTextTwo
+  slug: MyStringTwo

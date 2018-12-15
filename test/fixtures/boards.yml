@@ -2,8 +2,12 @@
 
 one:
   name: MyString
+  short_name: two
   description: MyText
+  priority: 1
 
 two:
-  name: MyString
+  name: MyStringTwo
+  short_name: two
   description: MyText
+  priority: 2

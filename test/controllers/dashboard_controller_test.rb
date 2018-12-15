@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'clearance/test_unit'
 
 ##
 # = DashboardControllerTest
@@ -9,9 +10,15 @@ require 'test_helper'
 # This is the test case for the Dashboard controller.
 class DashboardControllerTest < ActionDispatch::IntegrationTest
   ##
+  # Sets up the test case.
+  setup do
+    @user = User.create!(email: 'example@example.com', password: 'letmein', handle: 'test', admin: true)
+  end
+
+  ##
   # Tests the index action.
-  test "should get index" do
-    get dashboard_index_url
+  test 'should get dashboard' do
+    get dashboard_path(as: @user)
     assert_response :success
   end
 end
