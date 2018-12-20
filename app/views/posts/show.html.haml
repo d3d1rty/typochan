@@ -7,7 +7,7 @@
         - if @post.flagged != true && @post.cleared != true
           = link_to 'Flag', flag_board_post_path(@board, @post), method: :post
           \|
-        - if current_user.admin? || current.user.mod?
+        - if current_user.admin? || current_user.mod?
           - if @post.flagged == true
             = link_to 'Unflag', unflag_board_post_path(@board, @post), method: :post
             \|
